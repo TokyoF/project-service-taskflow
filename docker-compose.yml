@@ -27,7 +27,7 @@ services:
     restart: unless-stopped
     environment:
       MYSQL_DATABASE: db_project
-      MYSQL_USER: root
+      MYSQL_USER: luffy
       MYSQL_PASSWORD: 123
       MYSQL_ROOT_PASSWORD: 123
     ports:
