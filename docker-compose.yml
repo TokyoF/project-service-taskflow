@@ -1,0 +1,37 @@
+
+version: '3.8'
+
+services:
+  project-service:
+    container_name: project-service
+    image: t0ky0le/project-service:1.0
+    build:
+      context: .
+    ports:
+      - "8092:8092"
+    environment:
+      - SERVER_PORT=8092
+      - DB_HOST=db_project
+      - DB_PORT=3306
+      - DB_NAME=db_project
+      - DB_USERNAME=root
+      - DB_PASSWORD=123
+      - EUREKA_SERVER_URL=http://discovery-server:8761/eureka/
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
+    depends_on:
+      - db_project
+      - kafka
+
+  db_project:
+    container_name: db_project
+    image: mysql:8.0.33
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: db_project
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 123
+      MYSQL_ROOT_PASSWORD: 123
+    ports:
+      - "8103:3306"
+    expose:
+      - 3306
