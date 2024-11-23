@@ -12,7 +12,7 @@ services:
     environment:
       - SERVER_PORT=8092
       - DB_HOST=db_project
-      - DB_PORT=3306
+      - DB_PORT=8103
       - DB_NAME=db_project
       - DB_USERNAME=root
       - DB_PASSWORD=123
